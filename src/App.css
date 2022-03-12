@@ -1,38 +1,37 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* > * {
+    font-family: "Poppins", cursive;
+    margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.users .status{
+  @apply rounded-full px-2 w-2 h-4 ring-2 ring-gray-50;
+  position: absolute;
+  top: 0;
+  right: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.users .delete{
+  position: absolute;
+  top:0;
+  right: 10px;
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+input.form-input{
+  @apply px-3 py-3 relative bg-white bg-white rounded text-sm border shadow outline-none focus:outline-none focus:ring w-full
 }
 
-.App-link {
-  color: #61dafb;
+.users .profile:hover{
+  @apply border-2 border-gray-100 rounded;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.users .profile:hover .delete{
+  display: inherit;
 }
