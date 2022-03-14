@@ -1,13 +1,23 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
-
+import { useMutation, useQueryClient } from 'react-query';
+import { createUser } from './helper';
 
 export default function CreateUser() {
 
   const { register, handleSubmit, resetField } = useForm();
+  const queryClient = useQueryClient();
+  const addMutation = useMutation(createUser, {
+    onSuccess : () => queryClient.invalidateQueries('users')
+  })
 
   const onSubmit = async (data) => {
-    console.log(data)
+    if(data){
+      await addMutation.mutate(data);
+      console.log("Data Created Successfully");
+      resetField('name');
+      resetField('email')
+    }
   }
 
   return (
